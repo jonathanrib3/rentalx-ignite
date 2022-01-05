@@ -1,9 +1,23 @@
 import express from "express";
-import categoriesRoutes from "./routes/categories.routes";
+import swaggerUi from "swagger-ui-express";
+import "dotenv/config";
+import "express-async-errors";
+
+import swaggerFile from "../swagger.json";
+import "./database";
+import { router } from "./routes";
+import "./shared/containers";
+import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
 app.use(express.json());
-app.use("/categories", categoriesRoutes);
+app.use(router);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use(errorHandler);
 
-app.listen(3000, () => console.log("server running on port 3000"));
+app.listen(process.env.SERVER_PORT, () =>
+  console.log(
+    `Server running on http://${process.env.SERVER_ADDRESS}:${process.env.SERVER_PORT}`
+  )
+);
