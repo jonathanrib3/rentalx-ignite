@@ -1,7 +1,6 @@
+import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
+import { AppError } from "@shared/infra/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../AppError";
-
-import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 
 interface IRequest {
   name: string;
@@ -12,7 +11,7 @@ interface IRequest {
 class CreateSpecificationUseCase {
   constructor(
     @inject("SpecificationsRepository")
-    private specificationsRepository: SpecificationsRepository
+    private specificationsRepository: ISpecificationsRepository
   ) {}
 
   async execute({ description, name }: IRequest) {
@@ -23,7 +22,12 @@ class CreateSpecificationUseCase {
       throw new AppError(400, "Specification already exists!");
     }
 
-    await this.specificationsRepository.create({ name, description });
+    const specification = await this.specificationsRepository.create({
+      name,
+      description,
+    });
+
+    return specification;
   }
 }
 

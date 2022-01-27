@@ -1,6 +1,6 @@
+import { AppError } from "@shared/infra/errors/AppError";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { AppError } from "../../../../AppError";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserController {

@@ -1,17 +1,51 @@
 {
   "compilerOptions": {
-   
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    
-    "module": "commonjs",                                /* Specify what module code is generated. */
-    //"rootDir": "./src",                                  /* Specify the root folder within your source files. */
-    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
-               
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "target": "es2016",
+    "lib": [],
+    "module": "commonjs",                         
+    "outDir": "./dist",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-  }
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@database/*": [
+        "src/shared/infra/typeorm/database/*"
+      ],
+      "@errors/*": [
+        "src/shared/infra/errors/*"
+      ],
+      "@middlewares/*": [
+        "src/shared/infra/http/middlewares/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@routes/*": [
+        "src/shared/infra/http/routes/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@root/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.spec.ts"]
 }

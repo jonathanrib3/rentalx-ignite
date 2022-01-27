@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import bcrypt from "bcrypt";
 
-import { UsersRepository } from "../../repositories/implementations/UserRepository";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 interface IRequest {
   name: string;
@@ -14,7 +14,7 @@ interface IRequest {
 class CreateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: UsersRepository
+    private usersRepository: IUsersRepository
   ) {}
 
   hashPassword(passwordToBeHashed: string): string {

@@ -1,10 +1,9 @@
+import { AppError } from "@shared/infra/errors/AppError";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import "dotenv/config";
-
-import { UsersRepository } from "../../repositories/implementations/UserRepository";
-import { AppError } from "../../../../AppError";
 
 interface IRequest {
   email: string;
@@ -21,7 +20,7 @@ interface ITokenPayload {
 class AuthorizateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: UsersRepository
+    private usersRepository: IUsersRepository
   ) {}
 
   async execute({ email, password }: IRequest) {
@@ -48,7 +47,9 @@ class AuthorizateUserUseCase {
       expiresIn: "1d",
     });
 
-    return token;
+    return {
+      token,
+    };
   }
 }
 
