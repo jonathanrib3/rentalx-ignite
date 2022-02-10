@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("./config.js");
 
 module.exports = {
   type: "postgres",
@@ -6,11 +6,12 @@ module.exports = {
   port: process.env.DB_PORT,
   password: process.env.DB_PASSWORD,
   username: process.env.DB_USERNAME,
-  database: process.env.DATABASE,
+  database: process.env.DB_NAME,
   migrations: ["./src/shared/infra/typeorm/database/migrations/*.ts"],
   entities: [
     "./src/modules/cars/infra/typeorm/entities/*.ts",
-    "./src/modules/accounts/infra/typeorm/entities/*.ts"
+    "./src/modules/accounts/infra/typeorm/entities/*.ts",
+    "./src/modules/rentals/infra/typeorm/entities/*.ts"
   ],
   cli: {
     migrationsDir: "./src/shared/infra/typeorm/database/migrations"

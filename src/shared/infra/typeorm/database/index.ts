@@ -1,5 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
-import "dotenv/config";
+import "@root/config.js";
 
 interface IOptions {
   host: string;

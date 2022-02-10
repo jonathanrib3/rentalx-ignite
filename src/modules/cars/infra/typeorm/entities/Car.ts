@@ -1,4 +1,3 @@
-import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
 import {
   Column,
   CreateDateColumn,
@@ -10,6 +9,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Specification } from "./Specification";
 import { Category } from "./Category";
 
 @Entity("cars")

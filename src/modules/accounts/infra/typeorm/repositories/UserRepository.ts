@@ -28,6 +28,8 @@ class UsersRepository implements IUsersRepository {
     });
 
     await this.repository.save(newUser);
+
+    return newUser;
   }
 
   async findByEmail(email: string): Promise<User> {

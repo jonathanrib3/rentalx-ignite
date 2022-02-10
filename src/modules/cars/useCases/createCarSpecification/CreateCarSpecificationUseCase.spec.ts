@@ -50,8 +50,6 @@ describe("Create CarSpecification", () => {
       specifications_ids: [specification1.id, specification2.id],
     });
 
-    console.log(car_specification);
-
     expect(car_specification.specifications).toEqual([
       specification1,
       specification2,

@@ -3,7 +3,7 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepositor
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
-import "dotenv/config";
+import "@root/config.js";
 
 interface IRequest {
   email: string;

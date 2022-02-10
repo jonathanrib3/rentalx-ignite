@@ -2,7 +2,7 @@ import { AppError } from "@errors/AppError";
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import "dotenv/config";
+import "@root/config.js";
 import { container } from "tsyringe";
 
 interface IPayload {

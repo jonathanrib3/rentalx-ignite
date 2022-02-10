@@ -26,7 +26,7 @@ carsRoutes.post(
 carsRoutes.post("/", authentication, ensureAdmin, createCarController.handle);
 
 carsRoutes.patch(
-  "/images",
+  "/images/:car_id",
   authentication,
   ensureAdmin,
   upload.array("images"),

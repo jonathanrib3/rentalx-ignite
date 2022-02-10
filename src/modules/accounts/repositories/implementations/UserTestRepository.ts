@@ -23,6 +23,8 @@ class UserTestRepository implements IUsersRepository {
     });
 
     await this.users.push(newUser);
+
+    return newUser;
   }
 
   async findByEmail(email: string): Promise<User> {
