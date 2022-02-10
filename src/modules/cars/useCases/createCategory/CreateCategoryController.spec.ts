@@ -8,11 +8,11 @@ let connection: Connection;
 describe("create category integration tests", () => {
   beforeAll(async () => {
     connection = new Connection();
-    awaoken_response = await request(testApp).post("/sessions").send({
+    connection.create().then(async () => {
+      token_response = await request(testApp).post("/sessions").send({
         email: "admin@rentx.com.br",
         password: "admin",
-      });it connection.create().then(async () => {
-      t
+      });
     });
   });
 
